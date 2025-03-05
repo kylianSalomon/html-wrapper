@@ -14,8 +14,7 @@
     "vscode": "^1.96.0"
   },
   "categories": [
-    "Other",
-    "Refactoring"
+    "Other"
   ],
   "keywords": [
     "html",
