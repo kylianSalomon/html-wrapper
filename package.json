@@ -3,7 +3,7 @@
   "displayName": "HTML Wrapper",
   "description": "HTML/React component refactoring tools - wrap elements and components with another one or unwrap them while preserving their children",
   "version": "0.0.2",
-  "publisher": "kylianSalomon",
+  "publisher": "SalomonKylian",
   "private": false,
   "license": "MIT",
   "repository": {
