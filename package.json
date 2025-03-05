@@ -1,0 +1,102 @@
+{
+  "name": "html-wrapper",
+  "displayName": "HTML Wrapper",
+  "description": "HTML/React component refactoring tools - wrap elements and components with another one or unwrap them while preserving their children",
+  "version": "0.0.2",
+  "publisher": "kylianSalomon",
+  "private": false,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/html-wrapper.git"
+  },
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other",
+    "Refactoring"
+  ],
+  "keywords": [
+    "html",
+    "react",
+    "refactoring",
+    "component",
+    "wrap",
+    "unwrap"
+  ],
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#C80000",
+    "theme": "dark"
+  },
+  "screenshots": [
+    {
+      "path": "images/screenshot1.png",
+      "alt": "Wrap/Unwrap with Element Demo"
+    }
+  ],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:html"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "html-wrapper.wrapWith",
+        "title": "Wrap with Element",
+        "category": "HTML"
+      },
+      {
+        "command": "html-wrapper.unwrapComponent",
+        "title": "Unwrap Element",
+        "category": "HTML"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "html-wrapper.wrapWith",
+          "group": "html-wrapper@1",
+          "when": "editorTextFocus && (editorLangId == javascriptreact || editorLangId == typescriptreact || editorLangId == html)"
+        },
+        {
+          "command": "html-wrapper.unwrapComponent",
+          "group": "html-wrapper@2",
+          "when": "editorTextFocus && (editorLangId == javascriptreact || editorLangId == typescriptreact || editorLangId == html)"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/babel__generator": "^7.6.8",
+    "@types/babel__traverse": "^7.20.6",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.96.0",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.21.0",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@babel/generator": "^7.26.9",
+    "@babel/parser": "^7.26.9",
+    "@babel/traverse": "^7.26.9",
+    "@babel/types": "^7.26.9"
+  }
+}
