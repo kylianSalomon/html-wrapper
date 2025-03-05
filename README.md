@@ -139,11 +139,13 @@ This extension is licensed under the MIT License - see the [LICENSE](LICENSE) fi
 
 ## Support
 
-If you encounter any issues or have suggestions, please file them in the [GitHub issues](https://github.com/yourusername/html-wrapper/issues).
+If you encounter any issues or have suggestions, please file them in the [GitHub issues](https://github.com/kylianSalomon/html-wrapper).
 
 ## Credits
 
 Inspired by Flutter's component refactoring tools.
+
+Thanks to **Louis Harismendy** that designed the extension icon.
 
 ## Following extension guidelines
 

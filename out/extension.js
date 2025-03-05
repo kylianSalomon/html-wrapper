@@ -41,13 +41,13 @@ exports.deactivate = deactivate;
 const vscode = __importStar(require("vscode"));
 const reactUtils_1 = require("./reactUtils");
 exports.reactRefactorCommands = [
-    "react-wrapper.wrapWith",
-    "react-wrapper.unwrapComponent",
+    "html-wrapper.wrapWith",
+    "html-wrapper.unwrapComponent",
 ];
 class ReactRefactorCommands {
     constructor(context) {
         // Register refactoring provider
-        const refactoringProvider = vscode.languages.registerCodeActionsProvider(["javascriptreact", "typescriptreact"], {
+        const refactoringProvider = vscode.languages.registerCodeActionsProvider(["javascriptreact", "typescriptreact", "html"], {
             provideCodeActions(document, range, context) {
                 // Try to find components in selection first
                 let components = (0, reactUtils_1.findReactComponents)(document, range);
@@ -63,18 +63,18 @@ class ReactRefactorCommands {
                 }
                 const actions = [];
                 // Wrap with Component action
-                const wrapAction = new vscode.CodeAction("Wrap with Component", vscode.CodeActionKind.Refactor);
+                const wrapAction = new vscode.CodeAction("Wrap with Element", vscode.CodeActionKind.Refactor);
                 wrapAction.command = {
-                    command: "react-wrapper.wrapWith",
-                    title: "Wrap with Component",
+                    command: "html-wrapper.wrapWith",
+                    title: "Wrap with Element",
                 };
                 actions.push(wrapAction);
                 // Only show unwrap action if there's exactly one component
                 if (components.length === 1) {
-                    const unwrapAction = new vscode.CodeAction("Unwrap Component", vscode.CodeActionKind.Refactor);
+                    const unwrapAction = new vscode.CodeAction("Unwrap Element", vscode.CodeActionKind.Refactor);
                     unwrapAction.command = {
-                        command: "react-wrapper.unwrapComponent",
-                        title: "Unwrap Component",
+                        command: "html-wrapper.unwrapComponent",
+                        title: "Unwrap Element",
                     };
                     actions.push(unwrapAction);
                 }
@@ -104,11 +104,11 @@ class ReactRefactorCommands {
             }
         }
         if (components.length === 0) {
-            vscode.window.showErrorMessage("No React components found at cursor position or in selection");
+            vscode.window.showErrorMessage("No HTML/JSX elements found at cursor position or in selection");
             return;
         }
         switch (refactorType) {
-            case "react-wrapper.wrapWith": {
+            case "html-wrapper.wrapWith": {
                 const result = (0, reactUtils_1.wrapComponents)(editor.document, components);
                 await editor.edit((editBuilder) => {
                     editBuilder.replace(new vscode.Range(editor.document.positionAt(0), editor.document.positionAt(editor.document.getText().length)), result.newText);
@@ -118,9 +118,9 @@ class ReactRefactorCommands {
                 editor.selection = new vscode.Selection(cursorPosition, cursorPosition);
                 break;
             }
-            case "react-wrapper.unwrapComponent": {
+            case "html-wrapper.unwrapComponent": {
                 if (components.length !== 1) {
-                    vscode.window.showErrorMessage("Please select a single component to unwrap");
+                    vscode.window.showErrorMessage("Please select a single element to unwrap");
                     return;
                 }
                 const newText = (0, reactUtils_1.unwrapComponent)(editor.document, components[0]);
@@ -138,7 +138,7 @@ exports.ReactRefactorCommands = ReactRefactorCommands;
 function activate(context) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "react-wrapper" is now active!');
+    console.log('Congratulations, your extension "html-wrapper" is now active!');
     new ReactRefactorCommands(context);
 }
 // This method is called when your extension is deactivated
