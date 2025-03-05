@@ -1,7 +1,7 @@
 {
-  "name": "html-wrapper",
-  "displayName": "HTML Wrapper",
-  "description": "HTML/React component refactoring tools - wrap elements and components with another one or unwrap them while preserving their children",
+  "name": "html-quick-wrapper",
+  "displayName": "HTML Quick Wrapper",
+  "description": "HTML/React component refactoring tools - wrap elements and components with another one or unwrap them while preserving their children.",
   "version": "0.0.2",
   "publisher": "SalomonKylian",
   "private": false,
