@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/html-wrapper.git"
+    "url": "https://github.com/kylianSalomon/html-wrapper"
   },
   "engines": {
     "vscode": "^1.96.0"
